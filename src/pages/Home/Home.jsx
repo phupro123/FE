@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getListProduct } from '../../redux/Product/productAction';
 
 const Home = ({ title }) => {
     
-    
-
+    const dispatch = useDispatch();
+    const products = useSelector(((state)=>state.product.products))
+    console.log(products)
     useEffect(() => {
         document.title = title;
+        dispatch(getListProduct());
     }, []);
    
     return (
